@@ -21,7 +21,7 @@ class StaffDisplay extends React.Component {
     }	
   }
   handlePrevClick(){
-	  if (this.weekday < TUESDAY) {
+	  if (this.state.weekday < TUESDAY) {
 		  return;
 	  }
 	  else {
@@ -32,13 +32,35 @@ class StaffDisplay extends React.Component {
 	  }
   }
   handleNextClick(){
-	  if (this.weekday > THURSDAY) {
+	  if (this.state.weekday > THURSDAY) {
 		  return;
 	  }
 	  else {
 		this.setState({
 		  stafftype: this.state.stafftype,
 		  weekday: this.state.weekday+1
+		});		  
+	  }
+  }
+  handleViewCooksClick() {
+	  if (this.state.stafftype === COOKS) {
+		  return;
+	  }
+	  else {
+		this.setState({
+		  stafftype: COOKS,
+		  weekday: this.state.weekday
+		});		  
+	  }
+  }
+  handleViewWaitersClick() {
+	  if (this.state.stafftype === WAITERS) {
+		  return;
+	  }
+	  else {
+		this.setState({
+		  stafftype: WAITERS,
+		  weekday: this.state.weekday
 		});		  
 	  }
   }  
@@ -58,6 +80,17 @@ class StaffDisplay extends React.Component {
 		<ul>
 			<li>No Staff Scheduled</li>
 		</ul>
+		
+		{this.state.stafftype != COOKS &&
+			<button onClick={this.handleViewCooksClick.bind(this)}>
+				View Cooks
+			</button>
+		}
+		{this.state.stafftype != WAITERS &&		
+			<button onClick={this.handleViewWaitersClick.bind(this)}>
+				View Waiters
+			</button>
+		}
 
     </div>
     );
