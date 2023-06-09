@@ -7,7 +7,7 @@ const API_URL = 'http://127.0.0.1:5000';
 const API_GETCOOKS = API_URL+'/GetCooks'
 const API_GETWAITERS = API_URL+'/GetWaiters'
 
-// KM TO DO: Fetch this data from API:
+// KM TO DO: Fetch this data from API and remove these data constants below:
 const cooks_data = {
     "monday": [
         "John",
@@ -85,6 +85,8 @@ const waiters_data = {
 }
 
 function App() {
+	// NOTE: Backend API is not working so using test data defined in consts above to test until API is fixed
+	/*
 	const [user, setUser] = useState([]);
 	let cooks_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
 	let waiters_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
@@ -112,6 +114,7 @@ function App() {
 		fetchCooks();
 		fetchWaiters();
 	},[]);
+	*/
 
 	return (
 		<div className="App">
