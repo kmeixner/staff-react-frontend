@@ -88,17 +88,21 @@ function App() {
 	const [user, setUser] = useState([]);
 	
 	const fetchCooks = () => {
-		// TO DO: set this to API_GETCOOKS
-		return fetch("https://jsonplaceholder.typicode.com/users")
+		return fetch(API_GETCOOKS)
 			.then((response) => response.json())
-			.then((data) => console.log(data));
+			.then((data) => console.log(data))
+			.catch((error) => {
+				console.log(error)
+			});			
 	}
 
 	const fetchWaiters = () => {
-		// TO DO: set this to API_GETWAITERS
-		return fetch("https://jsonplaceholder.typicode.com/users")
+		return fetch(API_GETWAITERS)
 			.then((response) => response.json())
-			.then((data) => console.log(data));
+			.then((data) => console.log(data))
+			.catch((error) => {
+				console.log(error)
+			});
 	}	
 	
 	useEffect(() => {
