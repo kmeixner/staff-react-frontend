@@ -81,21 +81,16 @@ const waiters_data = {
     ]
 }
 
-const staff_data = {
-	"cooks": cooks_data,
-	"waiters": waiters_data
-};
-
 function App() {
 	
 	useEffect(() => {
-		// useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for new function App(){} syntax
-		console.log("Mounted"); 
+		// Note: useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for new function App(){} syntax
+		console.log('mounted');
 	},[]);
 
 	return (
 		<div className="App">
-			<StaffDisplay data={staff_data} />
+			<StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} />
 		</div>
 	);
 }
