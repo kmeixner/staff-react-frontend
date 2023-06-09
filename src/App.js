@@ -86,11 +86,13 @@ const waiters_data = {
 
 function App() {
 	const [user, setUser] = useState([]);
+	let cooks_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
+	let waiters_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
 	
 	const fetchCooks = () => {
 		return fetch(API_GETCOOKS)
 			.then((response) => response.json())
-			.then((data) => console.log(data))
+			.then((data) => {cooks_data = data})
 			.catch((error) => {
 				console.log(error)
 			});			
@@ -99,7 +101,7 @@ function App() {
 	const fetchWaiters = () => {
 		return fetch(API_GETWAITERS)
 			.then((response) => response.json())
-			.then((data) => console.log(data))
+			.then((data) => {waiters_data = data})
 			.catch((error) => {
 				console.log(error)
 			});
