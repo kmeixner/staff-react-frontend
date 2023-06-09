@@ -18,8 +18,44 @@ class StaffDisplay extends React.Component {
     this.state = {
       stafftype: 0,
 	  weekday: 0,
-    }	
+    }
   }
+  // Helper function:
+  getStaffTypeForDay() {
+	let staffList = [];
+	switch (this.state.stafftype) {
+		case COOKS:
+			staffList = this.props.data['cooks'];
+			break;
+		case WAITERS:
+			staffList = this.props.data['waiters'];
+			break;
+		default:
+			console.log('ERROR: Received unhandled stafftype');
+			return [];
+	}
+	switch (this.state.weekday) {
+		case MONDAY:
+			return staffList['monday'];
+			break;
+		case TUESDAY:
+			return staffList['tuesday'];
+			break;
+		case WEDNESDAY:
+			return staffList['wednesday'];
+			break;
+		case THURSDAY:
+			return staffList['thursday'];
+			break;
+		case FRIDAY:
+			return staffList['friday'];
+			break;
+		default:
+			console.log('ERROR: Received unhandled weekday');
+			return [];		
+	}
+  }
+  // Event Handlers:
   handlePrevClick(){
 	  if (this.state.weekday < TUESDAY) {
 		  return;
@@ -63,8 +99,9 @@ class StaffDisplay extends React.Component {
 		  weekday: this.state.weekday
 		});		  
 	  }
-  }  
+  }
   render() {
+	const stafflist = this.getStaffTypeForDay().map(i => <li>{i}</li>);
     return (
     <div>
 		<h1>{staffType[this.state.stafftype]}</h1>
@@ -77,9 +114,11 @@ class StaffDisplay extends React.Component {
 			Next
 		</button>		
 		
-		<ul>
-			<li>No Staff Scheduled</li>
-		</ul>
+		<div className="stafflist">
+			<ul>
+				<li className="stafflistline">{stafflist}</li>
+			</ul>
+		</div>
 		
 		{this.state.stafftype != COOKS &&
 			<button onClick={this.handleViewCooksClick.bind(this)}>
