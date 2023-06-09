@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useEffect } from "react";
 import axios from 'axios';
 import StaffDisplay from './StaffDisplay';
 import './App.css';
@@ -86,11 +87,17 @@ const staff_data = {
 };
 
 function App() {
-  return (
-    <div className="App">
-		<StaffDisplay data={staff_data} />
-    </div>
-  );
+	
+	useEffect(() => {
+		// useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for function App
+		console.log("Mounted"); 
+	},[]);
+
+	return (
+		<div className="App">
+			<StaffDisplay data={staff_data} />
+		</div>
+	);
 }
 
 export default App;
