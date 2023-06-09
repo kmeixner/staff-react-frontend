@@ -103,7 +103,7 @@ class StaffDisplay extends React.Component {
   render() {
 	const stafffortoday = this.getStaffTypeForDay();
 	const stafflist = (Array.isArray(stafffortoday) && stafffortoday.length) 
-		? this.getStaffTypeForDay().map(i => <li className="stafflistline">{i}</li>) 
+		? this.getStaffTypeForDay().map(i => <li className="stafflistline" key={i}>{i}</li>) 
 		: <div className="stafflistline">None</div>;
     return (
     <div>
