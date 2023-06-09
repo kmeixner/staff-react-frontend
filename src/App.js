@@ -87,15 +87,24 @@ const waiters_data = {
 function App() {
 	const [user, setUser] = useState([]);
 	
-	const fetchData = () => {
-	return fetch("https://jsonplaceholder.typicode.com/users")
-		.then((response) => response.json())
-		.then((data) => console.log(data));
+	const fetchCooks = () => {
+		// TO DO: set this to API_GETCOOKS
+		return fetch("https://jsonplaceholder.typicode.com/users")
+			.then((response) => response.json())
+			.then((data) => console.log(data));
+	}
+
+	const fetchWaiters = () => {
+		// TO DO: set this to API_GETWAITERS
+		return fetch("https://jsonplaceholder.typicode.com/users")
+			.then((response) => response.json())
+			.then((data) => console.log(data));
 	}	
 	
 	useEffect(() => {
 		// Note: useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for new function App(){} syntax
-		fetchData();
+		fetchCooks();
+		fetchWaiters();
 	},[]);
 
 	return (
