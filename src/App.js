@@ -3,6 +3,10 @@ import axios from 'axios';
 import StaffDisplay from './StaffDisplay';
 import './App.css';
 
+const API_URL = 'http://127.0.0.1:5000';
+const API_GETCOOKS = API_URL+'/GetCooks'
+const API_GETWAITERS = API_URL+'/GetWaiters'
+
 // KM TO DO: Fetch this data from API:
 const cooks_data = {
     "monday": [
