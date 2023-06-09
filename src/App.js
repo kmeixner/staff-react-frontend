@@ -89,7 +89,7 @@ const staff_data = {
 function App() {
 	
 	useEffect(() => {
-		// useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for function App
+		// useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for new function App(){} syntax
 		console.log("Mounted"); 
 	},[]);
 
