@@ -101,7 +101,10 @@ class StaffDisplay extends React.Component {
 	  }
   }
   render() {
-	const stafflist = this.getStaffTypeForDay().map(i => <li>{i}</li>);
+	const stafffortoday = this.getStaffTypeForDay();
+	const stafflist = (Array.isArray(stafffortoday) && stafffortoday.length) 
+		? this.getStaffTypeForDay().map(i => <li className="stafflistline">{i}</li>) 
+		: <div className="stafflistline">None</div>;
     return (
     <div>
 		<h1>{staffType[this.state.stafftype]}</h1>
@@ -116,7 +119,7 @@ class StaffDisplay extends React.Component {
 		
 		<div className="stafflist">
 			<ul>
-				<li className="stafflistline">{stafflist}</li>
+				{stafflist}
 			</ul>
 		</div>
 		
