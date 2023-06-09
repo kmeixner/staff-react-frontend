@@ -46,19 +46,19 @@ class StaffDisplay extends React.Component {
     return (
     <div>
 		<h1>{staffType[this.state.stafftype]}</h1>
-		
-		<h2>{daysOfWeek[this.state.weekday]}</h2>
+
+		<button disabled={this.state.weekday < TUESDAY} onClick={this.handlePrevClick.bind(this)}>
+			Prev
+		</button>		
+		&nbsp; <span className="dayOfWeekTitle">{daysOfWeek[this.state.weekday]}</span> &nbsp;
+		<button disabled={this.state.weekday > THURSDAY} onClick={this.handleNextClick.bind(this)}>
+			Next
+		</button>		
 		
 		<ul>
 			<li>No Staff Scheduled</li>
 		</ul>
-		
-		<button disabled={this.state.weekday < TUESDAY} onClick={this.handlePrevClick.bind(this)}>
-			Prev
-		</button>
-		<button disabled={this.state.weekday > THURSDAY} onClick={this.handleNextClick.bind(this)}>
-			Next
-		</button>
+
     </div>
     );
   }
