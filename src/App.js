@@ -20,10 +20,32 @@ class StaffDisplay extends React.Component {
 	  weekday: 0,
     }	
   }
+  handlePrevClick(){
+	  if (this.weekday < TUESDAY) {
+		  return;
+	  }
+	  else {
+		this.setState({
+		  stafftype: this.state.stafftype,
+		  weekday: this.state.weekday-1
+		});		  
+	  }
+  }
+  handleNextClick(){
+	  if (this.weekday > THURSDAY) {
+		  return;
+	  }
+	  else {
+		this.setState({
+		  stafftype: this.state.stafftype,
+		  weekday: this.state.weekday+1
+		});		  
+	  }
+  }  
   render() {
     return (
     <div>
-		<h1>{daysOfWeek[this.state.stafftype]}</h1>
+		<h1>{staffType[this.state.stafftype]}</h1>
 		
 		<h2>{daysOfWeek[this.state.weekday]}</h2>
 		
@@ -31,8 +53,12 @@ class StaffDisplay extends React.Component {
 			<li>No Staff Scheduled</li>
 		</ul>
 		
-		<button disabled={this.state.weekday < TUESDAY}>Prev</button>
-		<button disabled={this.state.weekday > THURSDAY}>Next</button>
+		<button disabled={this.state.weekday < TUESDAY} onClick={this.handlePrevClick.bind(this)}>
+			Prev
+		</button>
+		<button disabled={this.state.weekday > THURSDAY} onClick={this.handleNextClick.bind(this)}>
+			Next
+		</button>
     </div>
     );
   }
