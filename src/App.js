@@ -15,20 +15,21 @@ function App() {
 	let [waiters_data, setWaitersData] = useState(null);	
 
 	useEffect(() => {
+		
 		fetch(API_GETCOOKS)
 			.then(response => response.json())
 			.then(data => setCooksData(data))
-	},[]);
-	
-	useEffect(() => {
+			
 		fetch(API_GETWAITERS)
 			.then(response => response.json())
-			.then(data => setWaitersData(data))
-	},[]);	
-
+			.then(data => setWaitersData(data))			
+	},[]);
+	
 	return (
 		<div className="App">
-			{cooks_data && waiters_data && <StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} />}
+			{cooks_data && waiters_data && 
+				<StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} />
+			}
 		</div>
 	);
 }
