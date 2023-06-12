@@ -3,12 +3,15 @@ import axios from 'axios';
 import StaffDisplay from './StaffDisplay';
 import './App.css';
 
-const API_URL = 'http://127.0.0.1:5000';
-const API_GETCOOKS = API_URL+'/GetCooks'
-const API_GETWAITERS = API_URL+'/GetWaiters'
+//const API_URL = 'http://127.0.0.1:5000';
+//const API_GETCOOKS = API_URL+'/GetCooks'
+//const API_GETWAITERS = API_URL+'/GetWaiters'
+const API_URL = 'https://my-json-server.typicode.com/kmeixner/staff_db';
+const API_GETCOOKS = API_URL+'/cooks'
+const API_GETWAITERS = API_URL+'/waiters'
 
 // KM TO DO: Fetch this data from API and remove these data constants below:
-const cooks_data = {
+/*const cooks_data = {
     "monday": [
         "John",
         "William",
@@ -82,11 +85,11 @@ const waiters_data = {
         "Ralph",
         "Ed"
     ]
-}
+}*/
 
 function App() {
 	// NOTE: Backend API is not working so using test data defined in consts above to test until API is fixed
-	/*
+
 	const [user, setUser] = useState([]);
 	let cooks_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
 	let waiters_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
@@ -94,7 +97,7 @@ function App() {
 	const fetchCooks = () => {
 		return fetch(API_GETCOOKS)
 			.then((response) => response.json())
-			.then((data) => {cooks_data = data})
+			.then((data) => {console.log(data); cooks_data = data})
 			.catch((error) => {
 				console.log(error)
 			});			
@@ -103,7 +106,7 @@ function App() {
 	const fetchWaiters = () => {
 		return fetch(API_GETWAITERS)
 			.then((response) => response.json())
-			.then((data) => {waiters_data = data})
+			.then((data) => {console.log(data); waiters_data = data})
 			.catch((error) => {
 				console.log(error)
 			});
@@ -114,7 +117,6 @@ function App() {
 		fetchCooks();
 		fetchWaiters();
 	},[]);
-	*/
 
 	return (
 		<div className="App">
