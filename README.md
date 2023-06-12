@@ -10,5 +10,5 @@
 
 **Status (Things not working/incomplete):**
 * The application is currently using data from a my-json-server.typicode.com I setup until I get the backend working/incomplete
-* changing the URL path when toggling between Cooks/Waiters is not implemented yet
+
 
