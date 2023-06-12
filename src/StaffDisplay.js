@@ -16,7 +16,7 @@ class StaffDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stafftype: 0,
+      stafftype: this.props.path === '/Waiters' ? WAITERS : COOKS,
 	  weekday: 0,
     }
   }
@@ -86,7 +86,8 @@ class StaffDisplay extends React.Component {
 		this.setState({
 		  stafftype: COOKS,
 		  weekday: this.state.weekday
-		});		  
+		});	
+		window.location	= '/Cooks';
 	  }
   }
   handleViewWaitersClick() {
@@ -97,7 +98,8 @@ class StaffDisplay extends React.Component {
 		this.setState({
 		  stafftype: WAITERS,
 		  weekday: this.state.weekday
-		});		  
+		});
+		window.location	= '/Waiters';		
 	  }
   }
   render() {
