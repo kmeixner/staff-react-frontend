@@ -28,7 +28,10 @@ function App() {
 	return (
 		<div className="App">
 			{cooks_data && waiters_data && 
-				<StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} path={window.location.pathname} />
+				<StaffDisplay 
+					data={{"cooks": cooks_data, "waiters": waiters_data}} 
+					current_path={window.location.pathname} 
+				/>
 			}
 		</div>
 	);

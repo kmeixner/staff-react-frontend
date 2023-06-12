@@ -16,7 +16,7 @@ class StaffDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stafftype: this.props.path === '/Waiters' ? WAITERS : COOKS,
+      stafftype: this.props.current_path === '/Waiters' ? WAITERS : COOKS,
 	  weekday: 0,
     }
   }
