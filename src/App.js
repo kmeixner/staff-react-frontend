@@ -1,8 +1,9 @@
 import React, { Component, useEffect, useState } from "react";
-import axios from 'axios';
+//import axios from 'axios';
 import StaffDisplay from './StaffDisplay';
 import './App.css';
 
+// KM TODO: Get fastify backend working and set to Fastify API rather than test data URLs
 //const API_URL = 'http://127.0.0.1:5000';
 //const API_GETCOOKS = API_URL+'/GetCooks'
 //const API_GETWAITERS = API_URL+'/GetWaiters'
@@ -10,117 +11,25 @@ const API_URL = 'https://my-json-server.typicode.com/kmeixner/staff_db';
 const API_GETCOOKS = API_URL+'/cooks'
 const API_GETWAITERS = API_URL+'/waiters'
 
-// KM TO DO: Fetch this data from API and remove these data constants below:
-/*const cooks_data = {
-    "monday": [
-        "John",
-        "William",
-        "James",
-        "Charles"
-    ],
-    "tuesday": [
-        "George",
-        "Frank",
-        "Joseph"
-    ],
-    "wednesday": [
-        "Thomas",
-        "Henry",
-        "Robert",
-        "Edward",
-        "Harry",
-        "Walter"
-    ],
-    "thursday": [
-        "Albert",
-        "Samuel",
-        "David",
-        "Louis",
-        "Joe",
-        "Charlie"
-    ],
-    "friday": [
-        "Clarence",
-        "Richard",
-        "Andrew",
-        "Daniel",
-        "Ernest"
-    ]
-}
-
-const waiters_data = {
-    "monday": [
-       
-    ],
-    "tuesday": [
-        "Roy",
-        "Herbert",
-        "Jacob",
-        "Tom",
-        "Elmer",
-        "Carl",
-        "Lee"
-    ],
-    "wednesday": [
-        "Peter",
-        "Benjamin",
-        "Frederick",
-        "Willie",
-        "Alfred",
-        "Sam"
-    ],
-    "thursday": [
-        "Will",
-        "Jesse",
-        "Oscar",
-        "Lewis"
-    ],
-    "friday": [
-        "Herman",
-        "Jim",
-        "Francis",
-        "Harvey",
-        "Earl",
-        "Eugene",
-        "Ralph",
-        "Ed"
-    ]
-}*/
-
 function App() {
-	// NOTE: Backend API is not working so using test data defined in consts above to test until API is fixed
+	let [cooks_data, setCooksData] = useState(null);
+	let [waiters_data, setWaitersData] = useState(null);	
 
-	const [user, setUser] = useState([]);
-	let cooks_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
-	let waiters_data = {"monday": [], "tuesday": [], "wednesday": [], "thursday": [], "friday": []};
-	
-	const fetchCooks = () => {
-		return fetch(API_GETCOOKS)
-			.then((response) => response.json())
-			.then((data) => {console.log(data); cooks_data = data})
-			.catch((error) => {
-				console.log(error)
-			});			
-	}
-
-	const fetchWaiters = () => {
-		return fetch(API_GETWAITERS)
-			.then((response) => response.json())
-			.then((data) => {console.log(data); waiters_data = data})
-			.catch((error) => {
-				console.log(error)
-			});
-	}	
+	useEffect(() => {
+		fetch(API_GETCOOKS)
+			.then(response => response.json())
+			.then(data => setCooksData(data))
+	},[]);
 	
 	useEffect(() => {
-		// Note: useEffet() is a React Version 16.8.0+ ComponentDidMount() alternative for new function App(){} syntax
-		fetchCooks();
-		fetchWaiters();
-	},[]);
+		fetch(API_GETWAITERS)
+			.then(response => response.json())
+			.then(data => setWaitersData(data))
+	},[]);	
 
 	return (
 		<div className="App">
-			<StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} />
+			{cooks_data && waiters_data && <StaffDisplay data={{"cooks": cooks_data, "waiters": waiters_data}} />}
 		</div>
 	);
 }
