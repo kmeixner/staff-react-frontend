@@ -31,6 +31,8 @@ function App() {
 				<StaffDisplay 
 					data={{"cooks": cooks_data, "waiters": waiters_data}} 
 					current_path={window.location.pathname} 
+					cooks_path='/Cooks'
+					waiters_path='/Waiters'
 				/>
 			}
 		</div>

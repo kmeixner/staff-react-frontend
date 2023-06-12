@@ -87,7 +87,7 @@ class StaffDisplay extends React.Component {
 		  stafftype: COOKS,
 		  weekday: this.state.weekday
 		});	
-		window.location	= '/Cooks';
+		window.location	= this.props.cooks_path;
 	  }
   }
   handleViewWaitersClick() {
@@ -99,7 +99,7 @@ class StaffDisplay extends React.Component {
 		  stafftype: WAITERS,
 		  weekday: this.state.weekday
 		});
-		window.location	= '/Waiters';		
+		window.location	= this.props.waiters_path;		
 	  }
   }
   render() {
