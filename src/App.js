@@ -7,8 +7,8 @@ import './App.css';
 //const API_GETCOOKS = API_URL+'/GetCooks'
 //const API_GETWAITERS = API_URL+'/GetWaiters'
 const API_URL = 'https://my-json-server.typicode.com/kmeixner/staff_db';
-const API_GETCOOKS = API_URL+'/cooks'
-const API_GETWAITERS = API_URL+'/waiters'
+const API_GETCOOKS = API_URL+'/cooks'; // Note: GetCooks not possible with my-json-server.typicode.com test data URI
+const API_GETWAITERS = API_URL+'/waiters'; // Note: GetWaiters not possible with my-json-server.typicode.com test data URI
 
 function App() {
 	let [cooks_data, setCooksData] = useState(null);
