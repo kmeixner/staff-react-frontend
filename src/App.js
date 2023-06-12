@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState } from "react";
-//import axios from 'axios';
 import StaffDisplay from './StaffDisplay';
 import './App.css';
 
